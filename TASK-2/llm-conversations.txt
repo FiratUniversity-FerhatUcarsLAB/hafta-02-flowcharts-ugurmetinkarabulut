@@ -1,0 +1,18 @@
+Öğrenci No: 250541103
+Öğrenci Ad-Soyad: Uğur Metin Karabulut
+
+LLM Geçmişi - E-Ticaret Sepet ve Ödeme Sistemi
+
+1. Kullanıcı, e-ticaret sitesinde sepet yönetimi ve ödeme sisteminin adım adım açıklamasını istedi.
+   - İçerik: Kullanıcı girişi, ürün ekleme, stok kontrolü, indirim kodu, kargo hesaplama, ödeme aşamaları.
+
+2. Pseudocode oluşturulması talebi.
+   - Yapı: BASLA/BITIR, DÖNGÜ, EGER-ISE kullanılarak tüm kontrol noktalarıyla.
+
+3. Graphviz DOT formatına çevirme talebi.
+   - Detay: rankdir=TB, karar noktalarında EVET/HAYIR etiketleri.
+
+4. Sistemin kısa açıklamasını isteme.
+   - Versiyon 1: 5-6 satır, GPT izi olmadan sade anlatım.
+
+5. LLM geçmişi formatında çıktı talebi.
