@@ -1,0 +1,28 @@
+Öğrenci No:250541103
+Öğrenci Ad-Soyad: Uğur Metin Karabulut
+
+ATM Pseudocode LLM Geçmişi Özeti:
+
+Amaç:
+Kullanıcının ATM üzerinden bakiye sorgulama, para çekme, para yatırma ve çıkış işlemlerini yapabilmesini sağlamak.
+
+Ana Yapılar:
+- BASLA / BITIR ile program başı ve sonu
+- EGER-ISE ile karar noktaları (kart geçerliliği, şifre doğrulama, bakiye kontrolü)
+- DÖNGÜ ile menü tekrarları
+- Girdi/Çıktı işlemleri için EKRANA YAZ ve KULLANICI_AL
+
+İşlem Akışı:
+1. Kart okuma ve geçerlilik kontrolü
+2. Şifre doğrulama
+3. Ana menüde seçeneklere göre işlem gerçekleştirme:
+   - Bakiye sorgulama
+   - Para çekme (bakiye kontrolü dahil)
+   - Para yatırma
+   - Çıkış
+
+Hata Durumları:
+- Geçersiz kart
+- Hatalı şifre
+- Yetersiz bakiye
+
