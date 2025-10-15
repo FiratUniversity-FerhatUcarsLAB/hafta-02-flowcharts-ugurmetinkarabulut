@@ -1,0 +1,51 @@
+Öğrenci No: 250541103
+Öğrenci Ad-Soyad: Uğur Metin Karabulut
+
+digraph SonsuzDongu {
+    rankdir=TB;
+    node [shape=box];
+
+    Basla [label="BAŞLA", shape=oval];
+    AnaDongu [label="ANA DÖNGÜ (Sonsuz)", shape=diamond];
+    
+    SensorOku [label="Tüm Sensörleri Oku"];
+    TehditAlgila [label="Tehdit Seviyesi Belirle", shape=diamond];
+    HareketKontrol [label="Hareket Algılandı mı?", shape=diamond];
+    KapiKontrol [label="Kapı/Pencere Algılandı mı?", shape=diamond];
+    CamKontrol [label="Cam Algılandı mı?", shape=diamond];
+    
+    AlarmKarar [label="Alarm Seviyesi Belirle", shape=diamond];
+    AlarmDusus [label="Düşük Alarm", shape=box];
+    AlarmOrta [label="Orta Alarm", shape=box];
+    AlarmYuksek [label="Yüksek Alarm", shape=box];
+    Bildirim [label="Bildirim Gönder (SMS, App, Email)", shape=box];
+    
+    Bekle [label="Bekle ve Tekrar Kontrol Et", shape=box];
+
+    Bitir [label="BİTİR", shape=oval];
+
+    Basla -> AnaDongu;
+    AnaDongu -> SensorOku [label="Sürekli"];
+    
+    SensorOku -> HareketKontrol;
+    HareketKontrol -> KapiKontrol [label="Hayır"];
+    HareketKontrol -> AlarmKarar [label="Evet, Tehdit=2"];
+    
+    KapiKontrol -> CamKontrol [label="Hayır"];
+    KapiKontrol -> AlarmKarar [label="Evet, Tehdit=3"];
+    
+    CamKontrol -> AlarmKarar [label="Hayır"];
+    CamKontrol -> AlarmKarar [label="Evet, Tehdit=3"];
+    
+    AlarmKarar -> AlarmDusus [label="Düşük"];
+    AlarmKarar -> AlarmOrta [label="Orta"];
+    AlarmKarar -> AlarmYuksek [label="Yüksek"];
+    
+    AlarmDusus -> Bildirim;
+    AlarmOrta -> Bildirim;
+    AlarmYuksek -> Bildirim;
+    
+    Bildirim -> Bekle;
+    Bekle -> AnaDongu [label="Sürekli Döngü"];
+
+}
