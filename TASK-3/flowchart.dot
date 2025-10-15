@@ -1,39 +1,76 @@
-Öğrenci No: 250541103
+#Öğrenci No: 250541103
 Öğrenci Ad-Soyad: Uğur Metin Karabulut
 
-LLM Geçmişi: Hastane Sistemi ve Tahlil Sistemi Pseudocode Çalışmaları
+digraph HastaneSistemi {
+    rankdir=TB;
+    node [fontname="Arial"];
 
-1. Hastane Randevu Sistemi
-   - Kimlik doğrulama
-   - Poliklinik seçimi
-   - Doktor listesi görüntüleme
-   - Uygun saatleri gösterme
-   - Randevu onaylama
-   - SMS gönderme
+    // Başlangıç
+    Basla [label="BAŞLA\nHastane Sistemi", shape=oval];
 
-2. Tahlil Sonucu Görüntüleme Sistemi
-   - Kimlik doğrulama
-   - Tahlil varlığı kontrolü
-   - Sonuç hazır mı kontrolü
-   - Sonuç görüntüleme veya bekleme mesajı
-   - PDF indirme
+    // Kimlik doğrulama
+    KimlikGirdi [label="Kimlik numarası al", shape=parallelogram];
+    KimlikKontrol [label="Kimlik doğrulandı mı?", shape=diamond];
+    GirisBasarili [label="Giriş Başarılı", shape=box];
+    KimlikHata [label="Kimlik Hatalı, tekrar deneyin", shape=box];
 
-3. Ana Menü Entegrasyonu
-   - Kimlik doğrulama
-   - Ana menü (1: Randevu, 2: Tahlil)
-   - Seçime göre ilgili modüle yönlendirme
+    // Ana Menü
+    AnaMenu [label="Ana Menü\n1: Randevu\n2: Tahlil", shape=parallelogram];
+    SecimKontrol [label="Seçim geçerli mi?", shape=diamond];
+    
+    // Randevu Sistemi
+    PoliklinikSec [label="Poliklinik seçimi", shape=parallelogram];
+    DoktorSec [label="Doktor seçimi", shape=parallelogram];
+    SaatSec [label="Uygun saat seçimi", shape=parallelogram];
+    RandevuOnay [label="Randevu Onaylama", shape=diamond];
+    RandevuKaydet [label="Randevu kaydet ve SMS gönder", shape=box];
+    RandevuIptal [label="Randevu İptal Edildi", shape=box];
 
-4. Tek Parça Pseudocode
-   - Ana menü ile iki modülün birleşik akışı
-   - Tüm karar noktaları ve işlemler tek pseudocode içinde
+    // Tahlil Sistemi
+    TahlilGirdi [label="Tahlil ID al", shape=parallelogram];
+    TahlilVarMi [label="Tahlil mevcut mu?", shape=diamond];
+    TahlilBulundu [label="Tahlil bulundu", shape=box];
+    TahlilHazirMi [label="Sonuç hazır mı?", shape=diamond];
+    Goruntule [label="Tahlil sonucu görüntüle", shape=box];
+    PDFIndir [label="PDF indirilsin mi?", shape=diamond];
+    PDFBasarili [label="PDF başarıyla indirildi", shape=box];
+    TahlilBekle [label="Sonuç henüz hazır değil", shape=box];
 
-5. Graphviz DOT Formatı
-   - Başla/Bitir: oval
-   - Girdi/Çıktı: paralelkenar
-   - İşlem: kutu
-   - Karar: elmas
-   - EVET/HAYIR etiketleri ile akış diyagramı
+    // Bitiş
+    Bitir [label="BİTİR", shape=oval];
 
-6. Sistem Açıklaması
-   - Kullanıcı dostu, güvenli ve hızlı randevu ve tahlil yönetim sistemi
-   - Randevu ve tahlil işlemleri için kontrollü akış ve onay mekanizması
+    // Bağlantılar
+    Basla -> KimlikGirdi;
+    KimlikGirdi -> KimlikKontrol;
+    KimlikKontrol -> GirisBasarili [label="EVET"];
+    KimlikKontrol -> KimlikHata [label="HAYIR"];
+    KimlikHata -> KimlikGirdi;
+
+    GirisBasarili -> AnaMenu;
+    AnaMenu -> SecimKontrol;
+    SecimKontrol -> PoliklinikSec [label="1: Randevu"];
+    SecimKontrol -> TahlilGirdi [label="2: Tahlil"];
+    SecimKontrol -> AnaMenu [label="Hatalı seçim"];
+
+    // Randevu sistemi akışı
+    PoliklinikSec -> DoktorSec;
+    DoktorSec -> SaatSec;
+    SaatSec -> RandevuOnay;
+    RandevuOnay -> RandevuKaydet [label="EVET"];
+    RandevuOnay -> RandevuIptal [label="HAYIR"];
+    RandevuKaydet -> Bitir;
+    RandevuIptal -> Bitir;
+
+    // Tahlil sistemi akışı
+    TahlilGirdi -> TahlilVarMi;
+    TahlilVarMi -> TahlilBulundu [label="EVET"];
+    TahlilVarMi -> Bitir [label="HAYIR"];
+    TahlilBulundu -> TahlilHazirMi;
+    TahlilHazirMi -> Goruntule [label="EVET"];
+    TahlilHazirMi -> TahlilBekle [label="HAYIR"];
+    Goruntule -> PDFIndir;
+    PDFIndir -> PDFBasarili [label="EVET"];
+    PDFIndir -> Bitir [label="HAYIR"];
+    TahlilBekle -> Bitir;
+}
+
