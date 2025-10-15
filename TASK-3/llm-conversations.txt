@@ -34,7 +34,5 @@ LLM Geçmişi: Hastane Sistemi ve Tahlil Sistemi Pseudocode Çalışmaları
    - Karar: elmas
    - EVET/HAYIR etiketleri ile akış diyagramı
 
-6. Sistem Açıklaması
-   - Kullanıcı dostu, güvenli ve hızlı randevu ve tahlil yönetim sistemi
-   - Randevu ve tahlil işlemleri için kontrollü akış ve onay mekanizması
+
 
