@@ -1,0 +1,21 @@
+Öğrenci No: 250541103
+Öğrenci Ad-Soyad: Uğur Metin Karabulut
+
+LLM Geçmişi - Üniversite Ders Kayıt Sistemi
+
+Konular ve Yapılanlar:
+
+1. Üniversite ders kayıt sistemi akışı
+   - Giriş, ders listesi, ders seçimi, kontroller ve onaylama adımlarının açıklanması.
+
+2. Ders kaydı kontrolleri
+   - Kontenjan, ön koşul, zaman çakışması, kredi limiti ve danışman onayı kontrollerinin listelenmesi.
+
+3. Detaylı pseudocode
+   - İç içe EGER-ISE yapıları ve döngüler kullanılarak ders kaydı süreci yazıldı.
+   - Tüm kontroller ve ders seçim döngüsü dahil edildi.
+
+4. Graphviz DOT formatına çevirme
+   - Pseudocode akışı görselleştirilmek üzere DOT dilinde yazıldı.
+   - Kontrol noktaları diamond ile gösterildi, işlemler box, giriş/çıkışlar parallelogram, başlangıç/bitiş oval.
+
