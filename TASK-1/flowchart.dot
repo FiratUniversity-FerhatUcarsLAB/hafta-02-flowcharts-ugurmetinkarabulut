@@ -1,0 +1,70 @@
+Öğrenci No: 250541103
+Öğrenci Ad-Soyad: Uğur Metin Karabulut
+
+digraph ATM_Para_Cekme {
+    rankdir=TB;
+    node [fontname="Arial", fontsize=10];
+
+    BASLA [shape=oval, label="BASLA"];
+    Bitir [shape=oval, label="BİTİR"];
+
+    // Değişken tanımları
+    Init [shape=box, label="bakiye ← 5000\n gunluk_limit ← 2000\n giris_hakki ← 3\n cekilen_toplam ← 0"];
+
+    // PIN giriş döngüsü
+    PinGiris [shape=parallelogram, label="PIN giriniz"];
+    PinDogruMu [shape=diamond, label="PIN = 1234 mü?"];
+    PinYanlis [shape=box, label="giris_hakki ← giris_hakki - 1"];
+    HakVarMi [shape=diamond, label="giris_hakki = 0 mı?"];
+    KartBloke [shape=parallelogram, label="Kart bloke edildi"];
+    GirisBasarili [shape=parallelogram, label="PIN doğru.\nHoş geldiniz."];
+
+    // İşlem döngüsü
+    BilgiYaz [shape=parallelogram, label="Bakiyeniz ve günlük limitiniz gösterilir"];
+    TutarOku [shape=parallelogram, label="Çekmek istediğiniz tutarı giriniz"];
+    TutarKontrol1 [shape=diamond, label="tutar % 20 ≠ 0 mı?"];
+    Hata1 [shape=parallelogram, label="Tutar 20 TL'nin katı olmalı"];
+    TutarKontrol2 [shape=diamond, label="tutar > bakiye mi?"];
+    Hata2 [shape=parallelogram, label="Yetersiz bakiye"];
+    TutarKontrol3 [shape=diamond, label="cekilen_toplam + tutar > gunluk_limit mi?"];
+    Hata3 [shape=parallelogram, label="Günlük limit aşıldı"];
+    ParaCek [shape=box, label="bakiye ← bakiye - tutar\ncekilen_toplam ← cekilen_toplam + tutar"];
+    ParaCekYaz [shape=parallelogram, label="Para çekiliyor...\nYeni bakiye yazdır"];
+    Tekrar [shape=parallelogram, label="Başka işlem yapmak ister misiniz? (E/H)"];
+    TekrarKontrol [shape=diamond, label="cevap = 'H' veya 'h' mı?"];
+    Veda [shape=parallelogram, label="Kartınızı almayı unutmayın.\nİyi günler."];
+
+    // Bağlantılar
+    BASLA -> Init -> PinGiris;
+    PinGiris -> PinDogruMu;
+    PinDogruMu -> GirisBasarili [label="Evet"];
+    PinDogruMu -> PinYanlis [label="Hayır"];
+    PinYanlis -> HakVarMi;
+    HakVarMi -> KartBloke [label="Evet"];
+    HakVarMi -> PinGiris [label="Hayır"];
+    KartBloke -> Bitir;
+
+    GirisBasarili -> BilgiYaz;
+    BilgiYaz -> TutarOku;
+    TutarOku -> TutarKontrol1;
+
+    // Tutar kontrolü zinciri
+    TutarKontrol1 -> Hata1 [label="Evet"];
+    Hata1 -> BilgiYaz;
+
+    TutarKontrol1 -> TutarKontrol2 [label="Hayır"];
+    TutarKontrol2 -> Hata2 [label="Evet"];
+    Hata2 -> BilgiYaz;
+
+    TutarKontrol2 -> TutarKontrol3 [label="Hayır"];
+    TutarKontrol3 -> Hata3 [label="Evet"];
+    Hata3 -> BilgiYaz;
+
+    TutarKontrol3 -> ParaCek [label="Hayır"];
+    ParaCek -> ParaCekYaz;
+    ParaCekYaz -> Tekrar;
+    Tekrar -> TekrarKontrol;
+    TekrarKontrol -> Veda [label="Evet"];
+    Veda -> Bitir;
+    TekrarKontrol -> BilgiYaz [label="Hayır"];
+}
