@@ -10,3 +10,5 @@ Tehdit algılandığında, sistem SMS, mobil uygulama ve e-posta üzerinden bild
 Yanlış alarmları önlemek için ev sahibi evdeyse alarm devreye girmez. 
 Sistem, alarm sıfırlama komutu gelene kadar alarmı aktif tutar ve döngüsel olarak sensör kontrolünü sürdürür. 
 Bu sayede ev güvenliği sürekli sağlanır.
+
+Sistem karmaşık, anlaması ve anlatması zor olduğu için açıklama için ChatGPT'den yardım alındı.  
