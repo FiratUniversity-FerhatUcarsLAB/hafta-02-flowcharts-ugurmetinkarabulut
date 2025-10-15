@@ -1,0 +1,65 @@
+Öğrenci No:250541103
+Öğrenci Ad-Soyad: Uğur Metin Karabulut
+
+digraph DersKayitSistemi {
+    rankdir=TB;
+    node [shape=box];
+
+    // Başlangıç ve giriş
+    Basla [label="BAŞLA", shape=oval];
+    Giris [label="Kullanıcı adı ve şifre al", shape=parallelogram];
+    GirisKontrol [label="Giriş doğru mu?", shape=diamond];
+    GirisHata [label="Hatalı kullanıcı adı veya şifre", shape=box];
+    DersListesi [label="Ders listesini göster", shape=parallelogram];
+
+    // Ders seçimi ve kontroller
+    SecimDongu [label="Ders seçimi döngüsü", shape=box];
+    KontenjanKontrol [label="Kontenjan var mı?", shape=diamond];
+    OnKosulKontrol [label="Ön koşullar tamam mı?", shape=diamond];
+    ZamanCakismaKontrol [label="Zaman çakışması var mı?", shape=diamond];
+    KrediKontrol [label="Kredi limiti aşılmış mı?", shape=diamond];
+    DanismanKontrol [label="Danışman onayı gerekli mi?", shape=diamond];
+    DanismanOnayi [label="Danışman onayı alındı mı?", shape=diamond];
+    DersSecildi [label="Dersi seç ve kontenjanı azalt", shape=box];
+
+    // Onay ve bitiş
+    DersOnay [label="Seçilen dersleri göster ve onay al", shape=parallelogram];
+    Kaydet [label="Ders kaydını yap", shape=box];
+    Bitir [label="BİTİR", shape=oval];
+
+    // Kenarlar
+    Basla -> Giris;
+    Giris -> GirisKontrol;
+    GirisKontrol -> DersListesi [label="EVET"];
+    GirisKontrol -> GirisHata [label="HAYIR"];
+    GirisHata -> Bitir;
+
+    DersListesi -> SecimDongu;
+
+    SecimDongu -> KontenjanKontrol;
+    KontenjanKontrol -> OnKosulKontrol [label="EVET"];
+    KontenjanKontrol -> SecimDongu [label="HAYIR"];
+
+    OnKosulKontrol -> ZamanCakismaKontrol [label="EVET"];
+    OnKosulKontrol -> SecimDongu [label="HAYIR"];
+
+    ZamanCakismaKontrol -> KrediKontrol [label="HAYIR"];
+    ZamanCakismaKontrol -> SecimDongu [label="EVET"];
+
+    KrediKontrol -> DanismanKontrol [label="EVET"];
+    KrediKontrol -> SecimDongu [label="HAYIR"];
+
+    DanismanKontrol -> DanismanOnayi [label="EVET"];
+    DanismanKontrol -> DersSecildi [label="HAYIR"];
+
+    DanismanOnayi -> DersSecildi [label="EVET"];
+    DanismanOnayi -> SecimDongu [label="HAYIR"];
+
+    DersSecildi -> SecimDongu; // Döngü devam
+
+    SecimDongu -> DersOnay [label="Ders seçimi tamamlandı"];
+    DersOnay -> Kaydet [label="Onaylandı"];
+    DersOnay -> Bitir [label="Onaylanmadı"];
+    Kaydet -> Bitir;
+}
+
