@@ -1,0 +1,12 @@
+Öğrenci No:250541103
+Öğrenci Ad-Soyad: Uğur Metin Karabulut
+
+
+LLM Geçmişi - Akıllı Ev Güvenlik Sistemi
+
+1. Kullanıcı: IoT tabanlı akıllı ev güvenlik sistemi için alarm ve bildirim süreçlerini modelle.
+2. Asistan: Sistem açıklaması, pseudocode ve Graphviz DOT formatını sundu.
+3. Kullanıcı: Sistemi sonsuz döngü yaklaşımıyla modelle, ana döngü 7/24 çalışacak.
+4. Asistan: Sonsuz döngü pseudocode ve DOT modeli hazırladı; sensör kontrolü, tehdit algılama ve alarm bildirimlerini gösterdi.
+5. Kullanıcı: Sistemin kısa açıklamasını 5-6 satırda istiyor, gpt izi olmadan.
+6. Asistan: Kısa açıklamayı verdi, alarm döngüsü, sensörler ve bildirim süreci özetlendi.
