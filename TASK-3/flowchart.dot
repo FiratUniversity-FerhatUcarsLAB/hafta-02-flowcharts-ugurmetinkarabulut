@@ -1,0 +1,39 @@
+Öğrenci No: 250541103
+Öğrenci Ad-Soyad: Uğur Metin Karabulut
+
+LLM Geçmişi: Hastane Sistemi ve Tahlil Sistemi Pseudocode Çalışmaları
+
+1. Hastane Randevu Sistemi
+   - Kimlik doğrulama
+   - Poliklinik seçimi
+   - Doktor listesi görüntüleme
+   - Uygun saatleri gösterme
+   - Randevu onaylama
+   - SMS gönderme
+
+2. Tahlil Sonucu Görüntüleme Sistemi
+   - Kimlik doğrulama
+   - Tahlil varlığı kontrolü
+   - Sonuç hazır mı kontrolü
+   - Sonuç görüntüleme veya bekleme mesajı
+   - PDF indirme
+
+3. Ana Menü Entegrasyonu
+   - Kimlik doğrulama
+   - Ana menü (1: Randevu, 2: Tahlil)
+   - Seçime göre ilgili modüle yönlendirme
+
+4. Tek Parça Pseudocode
+   - Ana menü ile iki modülün birleşik akışı
+   - Tüm karar noktaları ve işlemler tek pseudocode içinde
+
+5. Graphviz DOT Formatı
+   - Başla/Bitir: oval
+   - Girdi/Çıktı: paralelkenar
+   - İşlem: kutu
+   - Karar: elmas
+   - EVET/HAYIR etiketleri ile akış diyagramı
+
+6. Sistem Açıklaması
+   - Kullanıcı dostu, güvenli ve hızlı randevu ve tahlil yönetim sistemi
+   - Randevu ve tahlil işlemleri için kontrollü akış ve onay mekanizması
